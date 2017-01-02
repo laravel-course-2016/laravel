@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'MainController@index')->name('site.main.index');
+Route::get('/about.html', 'MainController@about')->name('site.main.about');
+Route::get('/feedback.html', 'MainController@feedback')->name('site.main.feedback');
