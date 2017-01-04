@@ -40,4 +40,14 @@ class MainController extends Controller
             'activeMenu' => 'feedback',
         ]);
     }
+
+    public function post()
+    {
+        return view('layouts.secondary', [
+            'page' => 'pages.post',
+            'title' => 'Написать мне',
+            'content' => '<p>Привет, меня зовут Дмитрий Юрьев и я веб разработчик!</p>',
+            'activeMenu' => 'feedback',
+        ]);
+    }
 }
