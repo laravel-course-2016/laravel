@@ -6985,3 +6985,14 @@ body {
     border-bottom: 1px solid #ccc;
     font-size: 14px;
 }
+
+.widget-auth-form {
+    margin: 100px 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.widget-auth-form p {
+    margin-top: -15px;
+}
+
