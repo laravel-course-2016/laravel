@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreateSectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        /*Schema::create('sections', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image',255);
-            $table->string('caption',255);
+            $table->string('name',255);
+            $table->string('is_active',255);
             $table->string('tagline',255);
             $table->text('announce');
             $table->text('fulltext');
             $table->timestamps();
             $table->softDeletes();
-        });
+        });*/
     }
 
     /**
@@ -32,6 +32,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        //
     }
 }

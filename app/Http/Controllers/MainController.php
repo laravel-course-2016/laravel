@@ -1,9 +1,13 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\Post;
+
 class MainController extends Controller
 {
     public function index()
     {
+        $posts = Post::all();
+
         return view('layouts.primary', [
             'page' => 'pages.main',
             'title' => 'Blogplace :: Блог Дмитрий Юрьев - PHP & JS разработчик, ментор, преподаватель',
@@ -13,6 +17,7 @@ class MainController extends Controller
                 'alt' => 'Image'
             ],
             'activeMenu' => 'main',
+            'posts' => $posts
         ]);
     }
 
