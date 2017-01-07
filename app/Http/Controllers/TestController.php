@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Classes\AwesomeClass;
 
 class TestController extends Controller
 {
-    public function someMethod(Request $request)
+    public function someMethod(Request $request, AwesomeClass $awesomeClass)
     {
         $name = $this->request->input('name', 'Дмитрий');
         $surname = $request->input('surname', 'Юрьев');
@@ -16,6 +17,26 @@ class TestController extends Controller
         } else {
             $name = 'Дмитрий';
         }*/
+
+        var_dump($awesomeClass->getCounter());
+        var_dump($awesomeClass->getCounter());
+        var_dump($awesomeClass->getCounter());
+        var_dump($awesomeClass->getCounter());
+        var_dump($awesomeClass->getCounter());
+
+        $a = resolve('App\Classes\AwesomeClass');
+        var_dump($a->getCounter());
+
+
+        $b = resolve('App\Classes\AwesomeClass');
+        var_dump($b->getCounter());
+
+        /*$awesome = new \App\Classes\AwesomeClass();
+        var_dump($awesome->someSerious());
+        var_dump($awesome->someSerious());
+        var_dump($awesome->someSerious());
+        var_dump($awesome->someSerious());
+        */
 
         return view('test', [
            'name' => $name,
