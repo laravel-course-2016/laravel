@@ -7,6 +7,8 @@ use Illuminate\Support\ServiceProvider;
 
 class AwesomeServiceProvider extends ServiceProvider
 {
+    protected $defer = true;
+
     /**
      * Bootstrap the application services.
      *

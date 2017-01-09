@@ -95,16 +95,40 @@ class TestController extends Controller
         var_dump($this->awesome->getCounter());*/
 
 
-        $a = resolve('App\Classes\AwesomeClass');
+        /*$a = resolve('App\Classes\AwesomeClass');
         var_dump($a->getCounter());
-        var_dump($a);
+        var_dump($a);*/
 
 
-        $b = resolve('App\Classes\AwesomeClass');
+        /*$b = resolve('App\Classes\AwesomeClass');
         var_dump($b->getCounter());
-        var_dump($b);
+        var_dump($b);*/
 
 
-        //return '111';
+       // return '111';
+
+        /*return response('111', 200)
+            ->header('Content-Type', 'text/html')
+            ->header('access-control-allow-origin', '*')
+            ->cookie('mycookie', '1111', 86400 / 60);*/
+
+        return [
+            'a' => 1,
+            'b' => 2
+        ];
+
+
+
+        $arr = [
+            'a' => 1,
+            'b' => 2
+        ];
+
+        return response(json_encode($arr), 200)
+            ->header('Content-Type', 'application/json');
+
+
+
+        //echo '111';
     }
 }
