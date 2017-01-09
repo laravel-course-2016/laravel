@@ -29,6 +29,15 @@ class AwesomeServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        /*$this->app->bind('HelpSpot\API', function ($app) {
+            return new HelpSpot\API($app->make('HttpClient'));
+        });*/
 
+        $this->app->singleton('App\Classes\AwesomeClass', function ($app) {
+            $instance = new \App\Classes\AwesomeClass();
+            $instance->incCounter();
+            return $instance;
+            //return new \App\Classes\AwesomeClass();
+        });
     }
 }

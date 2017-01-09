@@ -7,7 +7,15 @@ use App\Classes\AwesomeClass;
 
 class TestController extends Controller
 {
-    public function someMethod(Request $request, AwesomeClass $awesomeClass)
+    protected $awesome;
+
+    public function __construct(Request $request, AwesomeClass $awesome)
+    {
+        parent::__construct($request);
+        $this->awesome = $awesome;
+    }
+
+    public function someMethod(Request $request)
     {
         $name = $this->request->input('name', 'Дмитрий');
         $surname = $request->input('surname', 'Юрьев');
@@ -18,11 +26,11 @@ class TestController extends Controller
             $name = 'Дмитрий';
         }*/
 
+       /* var_dump($awesomeClass->getCounter());
         var_dump($awesomeClass->getCounter());
         var_dump($awesomeClass->getCounter());
         var_dump($awesomeClass->getCounter());
-        var_dump($awesomeClass->getCounter());
-        var_dump($awesomeClass->getCounter());
+        var_dump($awesomeClass->getCounter());*/
 
         $a = resolve('App\Classes\AwesomeClass');
         var_dump($a->getCounter());
@@ -74,5 +82,29 @@ class TestController extends Controller
             'template' => 'pages.content2',
             'users' => []
         ]);
+    }
+
+    public function awesomeMethod()
+    {
+        //AwesomeClass $awesome
+        //$awesome = $this->awesome;
+        //$awesome = new AwesomeClass();
+        /*var_dump($this->awesome->getCounter());
+        var_dump($this->awesome->getCounter());
+        var_dump($this->awesome->getCounter());
+        var_dump($this->awesome->getCounter());*/
+
+
+        $a = resolve('App\Classes\AwesomeClass');
+        var_dump($a->getCounter());
+        var_dump($a);
+
+
+        $b = resolve('App\Classes\AwesomeClass');
+        var_dump($b->getCounter());
+        var_dump($b);
+
+
+        //return '111';
     }
 }

@@ -29,6 +29,7 @@ Route::get('/getTimestamp', function() {
 });
 
 Route::get('/some', 'TestController@someMethod');
+Route::get('/awesome', 'TestController@awesomeMethod');
 Route::get('/some2/{name}/{surname?}', 'TestController@someMethod2')->where('name', '[A-Za-z]+');
 Route::get('/get/byId/{id}', 'TestController@someMethod2')->where('id', '[0-9]+');
 
