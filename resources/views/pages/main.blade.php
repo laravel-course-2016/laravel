@@ -1,3 +1,5 @@
-@foreach($posts as $post)
+@forelse ($posts as $post)
     @include('parts.post')
-@endforeach
+@empty
+    <p>Нет постов для отображения</p>
+@endforelse

@@ -6,7 +6,7 @@
  * Time: 5:28
  */
 
-function getRusDate($dateTime, $format = '%DAYWEEK%, d %MONTH% Y', $offset = 0)
+function getRusDate($dateTime, $format = '%DAYWEEK%, d %MONTH% Y H:i', $offset = 0)
 {
     $monthArray = array('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
     $daysArray = array('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');

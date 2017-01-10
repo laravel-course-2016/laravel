@@ -1,13 +1,15 @@
 <div class="boxed push-down-60">
     <div class="meta">
-        <img class="wp-post-image" src="assets/images/dummy-licensed/blog-image.jpg" alt="Blog image" width="1138" height="493">
+        @if ($post->image)
+            <img class="wp-post-image" src="{{ $post->image }}" alt="Blog image" width="1138" height="493">
+        @endif
         <div class="row">
             <div class="col-xs-12  col-sm-10  col-sm-offset-1  col-md-8  col-md-offset-2">
                 <div class="meta__container--without-image">
                     <div class="row">
                         <div class="col-xs-12  col-sm-8">
                             <div class="meta__info">
-                                <span class="meta__date"><span class="glyphicon glyphicon-calendar"></span> &nbsp; 10 мая 2015</span>
+                                <span class="meta__date"><span class="glyphicon glyphicon-calendar"></span> &nbsp; {{ getRusDate($post->created_at) }}</span>
                             </div>
                         </div>
                         <div class="col-xs-12  col-sm-4">
@@ -23,57 +25,25 @@
     </div>
     <div class="row">
         <div class="col-xs-10  col-xs-offset-1  col-md-8  col-md-offset-2  push-down-60">
-
             <div class="post-content">
                 <h1>
-                    <a href="#">Основной заголовок (H1)</a>
+                    <a href="#">{{ $post->caption }}</a>
                 </h1>
-                <h3>Тэглайн поста размером H3</h3>
-                <p>
-                    Драм-машина, в первом приближении, имитирует тетрахорд. Пуантилизм, зародившийся в музыкальных микроформах начала ХХ столетия, нашел далекую историческую параллель в лице средневекового гокета, однако форма монотонно иллюстрирует гипнотический рифф. Явление
-                    культурологического порядка, в первом приближении, полифигурно продолжает паузный доминантсептаккорд. Процессуальное изменение заканчивает паузный контрапункт контрастных фактур. Как мы уже знаем, процессуальное изменение дает
-                    автономный гармонический интервал. Звукосниматель просветляет хорус.
-                </p>
-                <h2>Заголовок размером H2</h2>
-                <p>
-                    Драм-машина, в первом приближении, имитирует тетрахорд. Пуантилизм, зародившийся в музыкальных микроформах начала ХХ столетия, нашел далекую историческую параллель в лице средневекового гокета, однако форма монотонно иллюстрирует гипнотический рифф. Явление
-                    культурологического порядка, в первом приближении, полифигурно продолжает паузный доминантсептаккорд.
-                </p>
-                <blockquote>
-                    “Хочешь быть успешным PHP разработчиком - будь им” - Дмитрий Юрьев
-                </blockquote>
-                <p>
-                    Драм-машина, в первом приближении, имитирует тетрахорд. Пуантилизм, зародившийся в музыкальных микроформах начала ХХ столетия, нашел далекую историческую параллель в лице средневекового гокета, однако форма монотонно иллюстрирует гипнотический рифф. Явление
-                    культурологического порядка, в первом приближении, полифигурно продолжает паузный доминантсептаккорд.
-                </p>
-                <blockquote class="blockquote__alternative">
-                    Хочешь быть успешным PHP разработчиком - будь им
-                    <p>
-                        <br>- Дмитрий Юрьев</p>
-                </blockquote>
-                <h4>Заголовок размером H4</h4>
-                <p>
-                    Драм-машина, в первом приближении, имитирует тетрахорд. Пуантилизм, зародившийся в музыкальных микроформах начала ХХ столетия, нашел далекую историческую параллель в лице средневекового гокета, однако форма монотонно иллюстрирует гипнотический рифф. Явление
-                    культурологического порядка, в первом приближении, полифигурно продолжает паузный доминантсептаккорд.
-                </p>
+                <h3>{{ $post->tagline }}</h3>
+                {{ $post->fulltext }}
             </div>
-
             <div class="row">
                 <div class="col-xs-12  col-sm-6">
-
                     <div class="post-comments">
-                        <a class="btn  btn-primary" href="single-post-without-image.html">Комментарии (3)</a>
+                        <a class="btn btn-primary" href="single-post-without-image.html">Комментарии (3)</a>
                     </div>
-
                 </div>
                 <div class="col-xs-12  col-sm-6">
-
                     <div class="social-icons">
                         <a href="#" class="social-icons__container"> <span class="zocial-facebook"></span> </a>
                         <a href="#" class="social-icons__container"> <span class="zocial-twitter"></span> </a>
                         <a href="#" class="social-icons__container"> <span class="zocial-email"></span> </a>
                     </div>
-
                 </div>
             </div>
             <div class="row">

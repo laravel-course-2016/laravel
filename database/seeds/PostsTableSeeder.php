@@ -19,7 +19,7 @@ class PostsTableSeeder extends Seeder
                 'caption' => $faker->text(60),
                 'image' => $faker->imageUrl(1280,720),
                 'announce' => $faker->text(100),
-                'description' => $faker->text(512)
+                'fulltext' => $faker->text(512)
             ]);
         }
     }

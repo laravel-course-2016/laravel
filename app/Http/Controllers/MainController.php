@@ -6,7 +6,7 @@ class MainController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'DESC')->get();
 
         return view('layouts.primary', [
             'page' => 'pages.main',
@@ -46,15 +46,7 @@ class MainController extends Controller
         ]);
     }
 
-    public function post()
-    {
-        return view('layouts.secondary', [
-            'page' => 'pages.post',
-            'title' => 'Написать мне',
-            'content' => '<p>Привет, меня зовут Дмитрий Юрьев и я веб разработчик!</p>',
-            'activeMenu' => 'feedback',
-        ]);
-    }
+
 
     public function login()
     {
