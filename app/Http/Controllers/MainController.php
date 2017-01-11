@@ -37,7 +37,6 @@ class MainController extends Controller
 
     public function feedback()
     {
-        //return view('pages.feedback');
         return view('layouts.primary', [
             'page' => 'pages.feedback',
             'title' => 'Написать мне',
@@ -46,13 +45,11 @@ class MainController extends Controller
         ]);
     }
 
-
-
     public function login()
     {
         return view('layouts.secondary', [
             'page' => 'pages.login',
-            'title' => 'Написать мне',
+            'title' => 'Вход в систему',
             'content' => '<p>Привет, меня зовут Дмитрий Юрьев и я веб разработчик!</p>',
             'activeMenu' => 'feedback',
         ]);

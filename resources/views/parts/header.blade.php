@@ -25,6 +25,12 @@
                     <li class="feedback">
                         <a href="{{ route('site.main.feedback') }}" class="dropdown-toggle" data-toggle="dropdown">Написать мне</a>
                     </li>
+                    <li class="register">
+                        <a href="{{ route('site.auth.register') }}" class="dropdown-toggle" data-toggle="dropdown">Регистрация</a>
+                    </li>
+                    <li class="login">
+                        <a href="{{ route('site.auth.login') }}" class="dropdown-toggle" data-toggle="dropdown">Вход</a>
+                    </li>
                 </ul>
             </div>
         </nav>
