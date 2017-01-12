@@ -44,14 +44,4 @@ class MainController extends Controller
             'activeMenu' => 'feedback',
         ]);
     }
-
-    public function login()
-    {
-        return view('layouts.secondary', [
-            'page' => 'pages.login',
-            'title' => 'Вход в систему',
-            'content' => '<p>Привет, меня зовут Дмитрий Юрьев и я веб разработчик!</p>',
-            'activeMenu' => 'feedback',
-        ]);
-    }
 }

@@ -14,7 +14,6 @@
 Route::get('/', 'MainController@index')->name('site.main.index');
 Route::get('/about.html', 'MainController@about')->name('site.main.about');
 Route::get('/feedback.html', 'MainController@feedback')->name('site.main.feedback');
-Route::get('/login.html', 'MainController@login')->name('site.auth.login');
 Route::get('/post/{id}.html', 'PostController@post')->name('site.posts.post')->where('id', '[\d]+');
 
 /**
@@ -22,3 +21,8 @@ Route::get('/post/{id}.html', 'PostController@post')->name('site.posts.post')->w
  */
 Route::get('/register.html', 'AuthController@register')->name('site.auth.register');
 Route::post('/register.html', 'AuthController@registerPost')->name('site.auth.registerPost');
+
+
+Route::get('/login.html', 'AuthController@login')->name('site.auth.login');
+Route::post('/login.html', 'AuthController@loginPost')->name('site.auth.loginPost');
+Route::get('/logout.html', 'AuthController@logout')->name('site.auth.logout');
