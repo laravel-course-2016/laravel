@@ -6986,13 +6986,13 @@ body {
     font-size: 14px;
 }
 
-.widget-auth-form {
+.widget-auth-form, .widget-register-form {
     margin: 100px 0;
     text-align: center;
     overflow: hidden;
 }
 
-.widget-auth-form p {
+.widget-auth-form p, .widget-register-form p {
     margin-top: -15px;
 }
 
