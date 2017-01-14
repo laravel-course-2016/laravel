@@ -6,7 +6,10 @@ class MainController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy('id', 'DESC')->get();
+        $posts = Post::active()
+            ->intime()
+            ->orderBy('id', 'DESC')
+            ->get();
 
         return view('layouts.primary', [
             'page' => 'pages.main',

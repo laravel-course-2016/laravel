@@ -13,11 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-
 Route::get('/', 'MainController@index')->name('site.main.index');
 Route::get('/about.html', 'MainController@about')->name('site.main.about');
 Route::get('/feedback.html', 'MainController@feedback')->name('site.main.feedback');
 Route::get('/post/{id}.html', 'PostController@post')->name('site.posts.post')->where('id', '[\d]+');
+Route::get('/post/{slug}.html', 'PostController@post')->name('site.posts.post')->where('slug', '[\:0-9A-Za-z\-]+');
 
 /**
  * Routes for register and login
@@ -56,6 +56,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => '/admin'], function () {
 
 Route::get('posts', 'TestController@showPosts');
 */
+
+
 /*Route::any('{any}', function() {
     return 'This is default route';
 })->where('any', '(.*)?');*/

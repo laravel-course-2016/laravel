@@ -7,9 +7,11 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function post($id)
+    public function post($slug)
     {
-        $post = Post::find($id);
+        $post = Post::where('slug', $slug)
+            ->active()
+            ->firstOrFail();
 
         return view('layouts.secondary', [
             'page' => 'pages.post',

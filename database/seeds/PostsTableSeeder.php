@@ -15,12 +15,17 @@ class PostsTableSeeder extends Seeder
         $faker = Faker\Factory::create('ru_RU');
 
         for ($i = 0; $i < 10; $i++) {
-            Post::create([
-                'caption' => $faker->text(60),
+            $postModel = Post::create([
+                'title' => $faker->realText(50),
+                'tagline' => $faker->realText(30),
                 'image' => $faker->imageUrl(1280,720),
-                'announce' => $faker->text(100),
-                'fulltext' => $faker->text(512)
+                'slug' => sha1(str_random(16) . microtime(true)),
+                'announce' => $faker->realText(300),
+                'fulltext' => $faker->realText(1024)
             ]);
+
+            $postModel->slug = $postModel->id . ':' . str_slug($postModel->title, '-');
+            $postModel->save();
         }
     }
 }

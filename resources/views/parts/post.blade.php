@@ -32,7 +32,7 @@
         <div class="col-xs-10  col-xs-offset-1">
             <div class="post-content--front-page">
                 <h2 class="front-page-title">
-                    <a href="{{ route('site.posts.post', ['id' => $post->id]) }}">{{ $post->caption }}</a>
+                    <a href="{{ route('site.posts.post', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
                 </h2>
                 @if ($post->tagline)
                     <h3>{{ $post->tagline }}</h3>
