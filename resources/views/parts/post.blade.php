@@ -48,7 +48,7 @@
                     Читать далее <span class="glyphicon glyphicon-chevron-right"></span>
                     <div class="comment-icon-counter">
                         <span class="glyphicon glyphicon-comment comment-icon"></span>
-                        <span class="comment-counter">10</span>
+                        <span class="comment-counter">{{ $post->comments->count() }}</span>
                     </div>
                 </div>
             </a>

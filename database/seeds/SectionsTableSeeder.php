@@ -14,18 +14,22 @@ class SectionsTableSeeder extends Seeder
     {
         Section::create([
             'name' => 'Общее',
+            'slug' => str_slug('Общее', '-')
         ]);
 
         Section::create([
             'name' => 'Разработка',
+            'slug' => str_slug('Разработка', '-')
         ]);
 
         Section::create([
             'name' => 'Квесты',
+            'slug' => str_slug('Квесты', '-')
         ]);
 
         Section::create([
             'name' => 'Путешествия',
+            'slug' => str_slug('Путешествия', '-')
         ]);
     }
 }

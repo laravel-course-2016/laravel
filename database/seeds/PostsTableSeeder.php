@@ -29,5 +29,9 @@ class PostsTableSeeder extends Seeder
             $postModel->slug = $postModel->id . ':' . str_slug($postModel->title, '-');
             $postModel->save();
         }
+
+        $favPost = Post::find(mt_rand(1,10));
+        $favPost->is_favorite = 1;
+        $favPost->save();
     }
 }

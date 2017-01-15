@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->text('fulltext')->nullable();
             $table->string('status',10)->default('OWNER');
             $table->boolean('is_active')->default(1);
+            $table->boolean('is_favorite')->default(0);
             $table->timestamp('active_from')->nullable();
             $table->timestamp('active_to')->nullable();
             $table->timestamps();
