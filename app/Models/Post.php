@@ -26,6 +26,11 @@ class Post extends Model
 
     public function sections()
     {
-        return $this->belongsToMany('App\Models\Post')->withTimestamps();
+        return $this->belongsToMany('App\Models\Section')->withTimestamps();
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
     }
 }

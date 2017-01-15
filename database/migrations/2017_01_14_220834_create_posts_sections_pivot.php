@@ -13,7 +13,7 @@ class CreatePostsSectionsPivot extends Migration
      */
     public function up()
     {
-        Schema::create('posts_sections', function (Blueprint $table) {
+        Schema::create('post_section', function (Blueprint $table) {
             $table->integer('post_id')->unsigned()->nullable();
             $table->foreign('post_id')->references('id')->on('sections')->onDelete('cascade');
 
@@ -31,6 +31,6 @@ class CreatePostsSectionsPivot extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts_sections');
+        Schema::dropIfExists('post_section');
     }
 }
