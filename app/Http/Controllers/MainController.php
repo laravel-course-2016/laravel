@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Section;
 
 class MainController extends Controller
 {
@@ -20,7 +21,7 @@ class MainController extends Controller
                 'alt' => 'Image'
             ],
             'activeMenu' => 'main',
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 

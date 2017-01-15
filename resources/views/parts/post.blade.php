@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-xs-12  col-sm-7">
                             <div class="meta__info">
-                                <a href="#">Статьи</a>
+                                {{ $post->sections->implode('name', ', ') }}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-5">
@@ -43,7 +43,7 @@
                     </p>
                 @endif
             </div>
-            <a href="{{ route('site.posts.post', ['id' => $post->id]) }}">
+            <a href="{{ route('site.posts.post', ['slug' => $post->slug]) }}">
                 <div class="read-more">
                     Читать далее <span class="glyphicon glyphicon-chevron-right"></span>
                     <div class="comment-icon-counter">

@@ -1,7 +1,8 @@
 <?php
 
 use App\Models\Post;
-use Illuminate\Database\Seeder;
+use Illuminate\Database\Seeder,
+    Carbon\Carbon;
 
 class PostsTableSeeder extends Seeder
 {
@@ -21,7 +22,8 @@ class PostsTableSeeder extends Seeder
                 'image' => $faker->imageUrl(1280,720),
                 'slug' => sha1(str_random(16) . microtime(true)),
                 'announce' => $faker->realText(300),
-                'fulltext' => $faker->realText(1024)
+                'fulltext' => $faker->realText(1024),
+                'active_from' => Carbon::now()
             ]);
 
             $postModel->slug = $postModel->id . ':' . str_slug($postModel->title, '-');

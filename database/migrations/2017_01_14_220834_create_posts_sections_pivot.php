@@ -15,10 +15,10 @@ class CreatePostsSectionsPivot extends Migration
     {
         Schema::create('post_section', function (Blueprint $table) {
             $table->integer('post_id')->unsigned()->nullable();
-            $table->foreign('post_id')->references('id')->on('sections')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
 
             $table->integer('section_id')->unsigned()->nullable();
-            $table->foreign('section_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
 
             $table->timestamps();
         });

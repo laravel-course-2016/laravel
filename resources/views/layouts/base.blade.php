@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <base href="{{ route('site.main.index') }}">
     <link rel="shortcut icon" href="assets/images/favicon.png">
-    <title>{{ $title or '' }}</title>
+    <title>{{ $title or $titleDefault  }}</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic|Roboto:400,700,500|Open+Sans:400,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="assets/css/default.css?{{ sha1(microtime(true)) }}" />
     @section('head_styles')
