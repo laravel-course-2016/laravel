@@ -13,20 +13,20 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-3 control-label">Логин / E-mail</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" name="email" id="inputEmail3" placeholder="Email">
+                        <input type="text" class="form-control" placeholder="Ваш логин или e-mail" name="email">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                    <label for="inputPassword3" class="col-sm-3 control-label">Пароль</label>
                     <div class="col-sm-9">
-                        <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Пароль">
+                        <input type="password" class="form-control" placeholder="Ваш пароль" name="password">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-3">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox">Запомнить меня</label>
+                                <input type="checkbox" name="remember">Запомнить меня</label>
                         </div>
                     </div>
                 </div>

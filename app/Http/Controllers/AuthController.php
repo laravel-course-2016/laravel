@@ -19,23 +19,24 @@ class AuthController extends Controller
     public function registerPost()
     {
         $this->validate($this->request, [
+            'name' => 'required|max:255',
             'email' => 'required|email|unique:users|max:255',
             'password' => 'required|max:255|min:6',
             'password2' => 'required|same:password',
             'phone' => 'required|regex:/\+\d{1}\s{1}\(\d{3}\)\s{1}\d{3}\-\d{2}\-\d{2}/',
-            'is_confirmed' => 'required'
+            'is_confirmed' => 'accepted'
         ]);
 
         DB::table('users')->insert([
+            'name' => $this->request->input('name'),
             'email' => $this->request->input('email'),
             'password' => bcrypt($this->request->input('password')),
             'phone' => $this->request->input('phone'),
-            'name' => $this->request->input('name'),
             'created_at' => \Carbon\Carbon::createFromTimestamp(time())->format('Y-m-d H:i:s'),
             'updated_at' => \Carbon\Carbon::createFromTimestamp(time())->format('Y-m-d H:i:s'),
         ]);
 
-        return redirect()->route('site.auth.login');
+        return 'OK';
     }
 
     public function login()
@@ -50,15 +51,21 @@ class AuthController extends Controller
 
     public function loginPost()
     {
+        /*var_dump($this->request->all());
+        dump($this->request->all());
+        debug($this->request->all());*/
+
+        $remember = $this->request->input('remember') ? true : false;
+
         $authResult = Auth::attempt([
             'email' => $this->request->input('email'),
-            'password' => $this->request->input('password')
-        ]);
+            'password' => $this->request->input('password'),
+        ], $remember);
 
         if ($authResult) {
             return redirect()->route('site.main.index');
         } else {
-            return redirect()->route('site.auth.login')->with('authError', 'Неправильный логин или пароль');
+            return redirect()->route('site.auth.login')->with('authError', trans('custom.wrong_password'));
         }
     }
 
@@ -66,6 +73,6 @@ class AuthController extends Controller
     {
         Auth::logout();
 
-        return redirect()->back();
+        return redirect()->route('site.auth.login');
     }
 }

@@ -27,7 +27,7 @@
         <div class="col-xs-10  col-xs-offset-1  col-md-8  col-md-offset-2  push-down-60">
             <div class="post-content">
                 <h1>
-                    <a href="#">{{ $post->caption }}</a>
+                    <a href="#">{{ $post->title }}</a>
                 </h1>
                 <h3>{{ $post->tagline }}</h3>
                 {{ $post->fulltext }}

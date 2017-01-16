@@ -14,6 +14,23 @@
             @endif
             <form class="form-horizontal" method="POST" enctype="application/x-www-form-urlencoded" action="{{ route('site.auth.registerPost') }}">
                 {{ csrf_field() }}
+                @if (count($errors) > 0)
+                    <div class="">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">Имя/Никнейм</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputEmail3" name="name" placeholder="Ivan Ivanov">
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-3 control-label">E-mail</label>
                     <div class="col-sm-9">

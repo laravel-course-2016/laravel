@@ -13,16 +13,14 @@ class CreateSectionsTable extends Migration
      */
     public function up()
     {
-        /*Schema::create('sections', function (Blueprint $table) {
+        Schema::create('sections', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',255);
-            $table->string('is_active',255);
-            $table->string('tagline',255);
-            $table->text('announce');
-            $table->text('fulltext');
+            $table->string('slug',255);
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
             $table->softDeletes();
-        });*/
+        });
     }
 
     /**
@@ -32,6 +30,6 @@ class CreateSectionsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('sections');
     }
 }

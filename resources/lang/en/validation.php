@@ -112,6 +112,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'email' => 'электронная почта'
+    ],
 
 ];
