@@ -13,7 +13,7 @@ class CreatePostsTagsPivot extends Migration
      */
     public function up()
     {
-        Schema::create('posts_tags', function (Blueprint $table) {
+        Schema::create('post_tag', function (Blueprint $table) {
             $table->integer('post_id')->unsigned()->nullable();
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
 
@@ -31,6 +31,6 @@ class CreatePostsTagsPivot extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts_tags');
+        Schema::dropIfExists('post_tag');
     }
 }

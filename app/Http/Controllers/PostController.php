@@ -11,6 +11,7 @@ class PostController extends Controller
     {
         $post = Post::where('slug', $slug)
             ->active()
+            ->intime()
             ->firstOrFail();
 
         return view('layouts.secondary', [

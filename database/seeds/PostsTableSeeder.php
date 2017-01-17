@@ -23,7 +23,8 @@ class PostsTableSeeder extends Seeder
                 'slug' => sha1(str_random(16) . microtime(true)),
                 'announce' => $faker->realText(300),
                 'fulltext' => $faker->realText(1024),
-                'active_from' => Carbon::now()
+                'active_from' => Carbon::now(),
+                'views_count' => mt_rand(0,100),
             ]);
 
             $postModel->slug = $postModel->id . ':' . str_slug($postModel->title, '-');

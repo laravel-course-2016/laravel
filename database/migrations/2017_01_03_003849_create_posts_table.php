@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('tagline',255)->nullable();
             $table->text('announce')->nullable();
             $table->text('fulltext')->nullable();
+            $table->integer('views_count')->nullable()->default(0);
             $table->string('status',10)->default('OWNER');
             $table->boolean('is_active')->default(1);
             $table->boolean('is_favorite')->default(0);
