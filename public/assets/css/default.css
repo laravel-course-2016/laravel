@@ -7000,3 +7000,7 @@ body {
     display: inline-block;
     margin-top: 5px;
 }
+
+.widget-featured-post h4.post-title {
+    line-height: 25px;
+}
