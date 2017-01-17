@@ -1,4 +1,4 @@
-@if ($post)
+@if (!empty($post))
     <div class="widget-featured-post push-down-30">
         <h6>Избранный пост</h6>
         <img src="{{ $post->image }}" alt="Featured post" width="293" height="127">

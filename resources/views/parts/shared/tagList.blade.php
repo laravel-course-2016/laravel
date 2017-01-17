@@ -1,4 +1,4 @@
-@if ($tags)
+@if (!empty($tags))
     <div class="tags widget-tags">
         <h6>Тэги</h6>
         <hr>
