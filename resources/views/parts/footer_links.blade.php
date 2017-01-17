@@ -29,10 +29,9 @@
                 <h6>Контакты</h6>
                 <hr>
                 <span class="widget-contact__text">
-                    <span class="widget-contact__title">Юрьев Дмитрий Сергеевич</span>
-                    <br>Email: dima@932433.ru
-                    <br>Skype: dyus84
-                    <br>VK: https://vk.com/dyuryev84
+                    <span class="widget-contact__title">Дмитрий Юрьев</span>
+                    <br>Email: <a href="mailto:dima@932433.ru">dima@932433.ru</a>
+                    <br>VK: <a href="https://vk.com/dyuryev84" target="_blank">https://vk.com/dyuryev84</a>
                     </span>
             </div>
         </div>

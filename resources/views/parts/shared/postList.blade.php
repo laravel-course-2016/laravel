@@ -1,7 +1,6 @@
 @if (!empty($popularPosts) && !empty($recentPosts))
 <div class="widget-posts  push-down-30">
     <h6>Популярное / Свежее</h6>
-
     <ul class="nav  nav-tabs">
         <li class="active">
             <a href="#recent-posts" data-toggle="tab"> <span class="glyphicon  glyphicon-time"></span> &nbsp;Свежо</a>
@@ -15,7 +14,9 @@
         <div class="tab-pane  fade  in  active" id="recent-posts">
             @forelse($recentPosts as $recentPost)
                 <div class="push-down-25">
-                    <img src="{{ $recentPost->image }}" alt="Posts">
+                    @if (!empty($recentPost->image))
+                        <img src="{{ $recentPost->image }}" alt="Posts">
+                    @endif
                     <h5>
                         <a href="post.html">{{ $recentPost->title }}</a><br>
                         <span class="widget-posts__time">{{ getRusDate($recentPost->created_at, 'd %MONTH% Y H:i') }}</span>
@@ -30,7 +31,9 @@
         <div class="tab-pane  fade" id="popular-posts">
             @forelse($popularPosts as $popularPost)
                 <div class="push-down-25">
-                    <img src="{{ $popularPost->image }}" alt="Posts">
+                    @if (!empty($popularPost->image))
+                        <img src="{{ $popularPost->image }}" alt="Posts">
+                    @endif                
                     <h5>
                         <a href="post.html">{{ $popularPost->title }}</a><br>
                         <span class="widget-posts__time">{{ getRusDate($popularPost->created_at, 'd %MONTH% Y H:i') }}</span>
