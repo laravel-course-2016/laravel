@@ -6996,3 +6996,7 @@ body {
     margin-top: -15px;
 }
 
+.widget-posts__time {
+    display: inline-block;
+    margin-top: 5px;
+}
