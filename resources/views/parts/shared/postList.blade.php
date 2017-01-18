@@ -18,7 +18,7 @@
                         <img src="{{ $recentPost->image }}" alt="Posts">
                     @endif
                     <h5>
-                        <a href="post.html">{{ $recentPost->title }}</a><br>
+                        <a href="{{ route('site.posts.post', ['slug' => $recentPost->slug]) }}">{{ $recentPost->title }}</a><br>
                         <span class="widget-posts__time">{{ getRusDate($recentPost->created_at, 'd %MONTH% Y H:i') }}</span>
                     </h5>
                 </div>
@@ -35,7 +35,7 @@
                         <img src="{{ $popularPost->image }}" alt="Posts">
                     @endif                
                     <h5>
-                        <a href="post.html">{{ $popularPost->title }}</a><br>
+                        <a href="{{ route('site.posts.post', ['slug' => $popularPost->slug]) }}">{{ $popularPost->title }}</a><br>
                         <span class="widget-posts__time">{{ getRusDate($popularPost->created_at, 'd %MONTH% Y H:i') }}</span>
                     </h5>
                 </div>

@@ -3,7 +3,7 @@
         <h6>Тэги</h6>
         <hr>
         @foreach($tags as $tag)
-            <a href="#" class="tags__link">{{ $tag->name }}</a>
+            <a href="{{ route('site.posts.byTag', ['tag' => $tag->name ]) }}" class="tags__link">{{ $tag->name }}</a>
         @endforeach
     </div>
 @endif

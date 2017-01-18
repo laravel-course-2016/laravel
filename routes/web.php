@@ -25,11 +25,11 @@ Route::group(['prefix' => 'post'], function() {
 
     Route::get('/tag/{tag}', 'PostController@listByTag')
         ->name('site.posts.byTag')
-        ->where('tag', '[\.\-\:0-9A-Za-zА-Яа-яё]+');
+        ->where('tag', '.+');
 
     Route::get('/section/{section}', 'PostController@listBySection')
         ->name('site.posts.bySection')
-        ->where('section', '[\.\-\:0-9A-Za-zА-Яа-яЁё]+');
+        ->where('section', '.+');
 });
 
 

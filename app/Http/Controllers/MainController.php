@@ -9,10 +9,7 @@ class MainController extends Controller
         $posts = Post::active()
             ->intime()
             ->orderBy('id', 'DESC')
-            ->get();
-
-        $lastId = Post::orderBy('id', 'DESC')->take(1)->first(['id'])->id;
-        debug($lastId);
+            ->paginate(config('blog.itemsPerPage'));
 
         return view('layouts.primary', [
             'page' => 'pages.main',
@@ -49,5 +46,10 @@ class MainController extends Controller
             'content' => '<p>Привет, меня зовут Дмитрий Юрьев и я веб разработчик!</p>',
             'activeMenu' => 'feedback',
         ]);
+    }
+
+    public function showError()
+    {
+        return response()->view('errors.503', ['error' => '404 страница не найдена'], 404);
     }
 }

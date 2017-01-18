@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Section;
 
 class PostController extends Controller
 {
     public function postBySlug($slug)
     {
-        $post = Post::where('slug', $slug)
-            ->active()
-            ->intime()
-            ->firstOrFail();
+        try {
+            $post = Post::where('slug', $slug)
+                ->active()
+                ->intime()
+                ->firstOrFail();
+        } catch (\Exception $e) {
+            abort(404);
+        }
 
         return view('layouts.secondary', [
             'page' => 'pages.post',
@@ -24,12 +29,18 @@ class PostController extends Controller
 
     public function listByTag($tag)
     {
-        $posts = Tag::where('name', $tag)
-            ->posts()
+        try {
+            $tag = Tag::where('name', $tag)
+                ->firstOrFail();
+        } catch (\Exception $e) {
+            abort(404);
+        }
+
+        $posts = $tag->posts()
             ->active()
             ->intime()
             ->orderBy('id', 'DESC')
-            ->get();
+            ->paginate(config('blog.itemsPerPage'));
 
         return view('layouts.primary', [
             'page' => 'pages.main',
@@ -44,12 +55,18 @@ class PostController extends Controller
 
     public function listBySection($section)
     {
-        $posts = Section::where('name', $section)
-            ->posts()
+        try {
+            $section = Section::where('name', $section)
+                ->firstOrFail();
+        } catch (\Exception $e) {
+            abort(404);
+        }
+
+        $posts = $section->posts()
             ->active()
             ->intime()
             ->orderBy('id', 'DESC')
-            ->get();
+            ->paginate(config('blog.itemsPerPage'));
 
         return view('layouts.primary', [
             'page' => 'pages.main',
