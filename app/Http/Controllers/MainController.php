@@ -11,6 +11,9 @@ class MainController extends Controller
             ->orderBy('id', 'DESC')
             ->get();
 
+        $lastId = Post::orderBy('id', 'DESC')->take(1)->first(['id'])->id;
+        debug($lastId);
+
         return view('layouts.primary', [
             'page' => 'pages.main',
             'title' => 'Blogplace :: Блог Дмитрий Юрьев - PHP & JS разработчик, ментор, преподаватель',

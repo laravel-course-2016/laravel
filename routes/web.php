@@ -16,8 +16,23 @@ use Illuminate\Http\Request;
 Route::get('/', 'MainController@index')->name('site.main.index');
 Route::get('/about.html', 'MainController@about')->name('site.main.about');
 Route::get('/feedback.html', 'MainController@feedback')->name('site.main.feedback');
-Route::get('/post/{id}.html', 'PostController@post')->name('site.posts.post')->where('id', '[\d]+');
-Route::get('/post/{slug}.html', 'PostController@post')->name('site.posts.post')->where('slug', '[\:0-9A-Za-z\-]+');
+
+
+Route::group(['prefix' => 'post'], function() {
+    Route::get('/{slug}.html', 'PostController@postBySlug')
+        ->name('site.posts.post')
+        ->where('slug', '[\:0-9A-Za-z\-]+');
+
+    Route::get('/tag/{tag}', 'PostController@listByTag')
+        ->name('site.posts.byTag')
+        ->where('tag', '[\.\-\:0-9A-Za-zА-Яа-яё]+');
+
+    Route::get('/section/{section}', 'PostController@listBySection')
+        ->name('site.posts.bySection')
+        ->where('section', '[\.\-\:0-9A-Za-zА-Яа-яЁё]+');
+});
+
+
 
 /**
  * Routes for register and login
