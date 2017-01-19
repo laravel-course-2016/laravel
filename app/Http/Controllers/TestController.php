@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Classes\AwesomeClass;
+use App\Classes\Uploader;
 
 class TestController extends Controller
 {
@@ -13,6 +14,21 @@ class TestController extends Controller
     {
         parent::__construct($request);
         $this->awesome = $awesome;
+    }
+
+    public function testGet(Uploader $uploader)
+    {
+        return '<form enctype="multipart/form-data" method="POST">'.
+            csrf_field() .
+            '<input type="file" name="file" />
+            <input type="submit" value="Go!" />
+        </form>';
+    }
+
+    public function testPost(Request $request, Uploader $uploader)
+    {
+        $uploader->upload($request, 'file');
+        return 'OK';
     }
 
     public function someMethod(Request $request)

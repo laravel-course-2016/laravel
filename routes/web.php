@@ -43,6 +43,9 @@ Route::get('/login.html', 'AuthController@login')->name('site.auth.login');
 Route::post('/login.html', 'AuthController@loginPost')->name('site.auth.loginPost');
 Route::get('/logout', 'AuthController@logout')->name('site.auth.logout');
 
+Route::get('/test', 'TestController@testGet');
+Route::post('/test', 'TestController@testPost');
+
 /*  
 Route::get('/', function () {
     return view('welcome');
