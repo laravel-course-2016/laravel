@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Upload;
 use Illuminate\Http\Request;
 use App\Classes\AwesomeClass;
 use App\Classes\Uploader;
@@ -25,10 +26,40 @@ class TestController extends Controller
         </form>';
     }
 
-    public function testPost(Request $request, Uploader $uploader)
+    public function testPost(Request $request, Uploader $uploader, Upload $uploadModel)
     {
-        $uploader->upload($request, 'file');
-        return 'OK';
+        $rules = [
+            'maxSize' => 5 * 1024 * 1024,
+            'minSize' => 10 * 1024,
+            'allowedExt' => [
+                'jpeg',
+                'jpg',
+                'png',
+                'gif',
+                'bmp',
+                'tiff'
+            ],
+            'allowedMime' => [
+                'image/jpeg',
+                'image/png',
+                'image/gif',
+                'image/bmp',
+                'image/tiff'
+            ],
+        ];
+
+        if ($uploader->validate($request, 'file', $rules)) {
+            $uploadedPath = $uploader->upload();
+
+            if ($uploadedPath !== false) {
+                $uploadsModel = $uploader->register($uploadModel);
+                $uploadedProps = $uploader->getProps();
+            }
+
+            return $uploadedPath !== false ? 'OK' : 'NE OK';
+        }
+
+        return $uploader->getErrors();
     }
 
     public function someMethod(Request $request)
