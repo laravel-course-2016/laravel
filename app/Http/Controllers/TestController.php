@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Test;
 use App\Models\Upload;
 use Illuminate\Http\Request;
 use App\Classes\AwesomeClass;
@@ -177,5 +178,81 @@ class TestController extends Controller
 
 
         //echo '111';
+    }
+
+
+    public function testOrm()
+    {
+        //$model = Test::findOrFail(10);
+
+        /*Test::create([
+           'name' => 'IVAN',
+            'surname' => 'IVANOV',
+            'age' => 100
+        ]);*/
+
+        $model = Test::firstOrNew([
+           'name' => 'Dima',
+            'age' => 20
+        ]);
+
+        $model->name = 'QWE';
+        $model->age = 1000;
+        $model->save();
+
+
+        // Retrieve the flight by the attributes, or create it if it doesn't exist...
+        //$flight = App\Flight::firstOrCreate(['name' => 'Flight 10']);
+
+// Retrieve the flight by the attributes, or instantiate a new instance...
+        //$flight = App\Flight::firstOrNew(['name' => 'Flight 10']);
+
+
+
+/*
+        $newTestModel = new Test();
+        $newTestModel->name = 'Anton';
+        $newTestModel->age = 35;
+        $newTestModel->save();
+*/
+        //abort(404);
+
+        //$model = Test::findOrFail(10);
+
+
+        //$model = Test::where('name', 'Вася')->get()[0];
+        /*$model = Test::where('name', 'Вася')
+            ->orderBy('id','DESC')
+            ->first();*/
+        //dump($model);
+        //debug($model);
+
+
+
+        //$model->name = 'QWERTY';
+        //$model->age = 1;
+        //$model->save();
+
+        //dump($model);
+
+
+
+
+
+
+
+
+/*
+        $tests = Test::all();
+        dump($tests);*/
+
+        /*foreach ($tests as $test) {
+            echo $test->name . ' - ' . $test->age . $test->id;
+            dump($test);
+        }*/
+
+        //dump($tests);
+
+        return 'OK';
     }
 }

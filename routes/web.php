@@ -46,6 +46,9 @@ Route::get('/logout', 'AuthController@logout')->name('site.auth.logout');
 Route::get('/test', 'TestController@testGet');
 Route::post('/test', 'TestController@testPost');
 
+
+Route::get('/orm', 'TestController@testOrm');
+
 /*  
 Route::get('/', function () {
     return view('welcome');
