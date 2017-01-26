@@ -5,6 +5,9 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\View;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -44,6 +47,20 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof NotFoundHttpException) {
+            return response()->view('errors.default', [
+                'errorCode' => 404,
+                'errorMessage' => 'Страница не найдена'
+            ], 404);
+        }
+
+        if ($exception instanceof HttpException) {
+            return response()->view('errors.default', [
+                'errorCode' => 403,
+                'errorMessage' => 'Доступ запрещен'
+            ], 403);
+        }
+
         return parent::render($request, $exception);
     }
 

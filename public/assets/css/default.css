@@ -6996,3 +6996,28 @@ body {
     margin-top: -15px;
 }
 
+.widget-posts__time {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.widget-featured-post h4.post-title {
+    line-height: 25px;
+}
+
+ul.pagination {
+    text-align: center;
+}
+
+ul.pagination > li {
+    list-style-type: none;
+    display: inline-block;
+    font-size: 32px;
+    padding: 0 10px;
+    border: 1px solid #a2ada2;
+    border-radius: 5px;
+}
+
+ul.pagination > li > a {
+    border-bottom: none;
+}

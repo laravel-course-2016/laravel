@@ -28,7 +28,7 @@
                     <li class="register">
                         <a href="{{ route('site.auth.register') }}" class="dropdown-toggle" data-toggle="dropdown">Регистрация</a>
                     </li>
-
+                    </li>
                     @if (Auth::check())
                         <li class="login">
                             Вошли как {{ Auth::user()->name }}<a href="{{ route('site.auth.logout') }}">Выход</a>

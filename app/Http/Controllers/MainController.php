@@ -6,7 +6,10 @@ class MainController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy('id', 'DESC')->get();
+        $posts = Post::active()
+            ->intime()
+            ->orderBy('id', 'DESC')
+            ->paginate(config('blog.itemsPerPage'));
 
         return view('layouts.primary', [
             'page' => 'pages.main',
@@ -17,7 +20,7 @@ class MainController extends Controller
                 'alt' => 'Image'
             ],
             'activeMenu' => 'main',
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 
@@ -45,4 +48,8 @@ class MainController extends Controller
         ]);
     }
 
+    public function showError()
+    {
+        return response()->view('errors.503', ['error' => '404 страница не найдена'], 404);
+    }
 }
