@@ -35,6 +35,9 @@
                         <button type="submit" class="btn btn-gray">Войти</button>
                     </div>
                 </div>
+                <div class="push-down-30">
+                    Еще не зарегистрированы? <a href="{{ route('site.auth.register') }}" style="cursor: pointer">Зарегистрироваться</a>
+                </div>
             </form>
         </div>
     </div>
