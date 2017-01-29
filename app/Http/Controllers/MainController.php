@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Mail\FeedbackMail;
 use App\Models\Post;
+use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
 {
@@ -43,7 +45,26 @@ class MainController extends Controller
         return view('layouts.primary', [
             'page' => 'pages.feedback',
             'title' => 'Написать мне',
-            'content' => '<p>Привет, меня зовут Дмитрий Юрьев и я веб разработчик!</p>',
+            'activeMenu' => 'feedback',
+        ]);
+    }
+
+    public function feedbackPost()
+    {
+        $this->validate($this->request, [
+            'name' => 'required|max:50|min:2',
+            'email' => 'required|max:255|email',
+            'message' => 'required|max:10240|min:10',
+        ]);
+
+        Mail::to('dima@932433.ru')
+            ->send(new FeedbackMail($this->request->all()));
+
+        return view('layouts.primary', [
+            'page' => 'parts.blank',
+            'title' => 'Сообщение отправлено!',
+            'content' => 'Спасибо за ваше сообщение!',
+            'link' => '<a href="javascript:history.back()">Вернуться назад</a>',
             'activeMenu' => 'feedback',
         ]);
     }

@@ -1,6 +1,7 @@
 @section('bottom_scripts')
     @parent
     <script src="assets/js/jquery.maskedinput.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 @endsection
 <div class="widget-author widget-register-form boxed">
     <div class="row">
@@ -96,9 +97,9 @@
                     <div class="col-sm-offset-4 col-sm-8">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="is_confirmed" {{ old('is_confirmed') ? 'checked' : '' }}>Согласен на хранение и обработку персональных данных</label>
+                                <input type="checkbox" name="is_confirmed" {{ old('is_confirmed') ? 'checked' : '' }}><span class="text-no-error">Согласен на хранение и обработку персональных данных</span></label>
                             @if ($errors->has('is_confirmed'))
-                                <span class="error-message">{{ $errors->first('is_confirmed') }}</span>
+                                <br><br><span class="error-message">{{ $errors->first('is_confirmed') }}</span>
                             @endif
                         </div>
                     </div>

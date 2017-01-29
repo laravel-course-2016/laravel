@@ -1971,7 +1971,7 @@ textarea.form-control {
     -o-user-select: none;
     user-select: none
 }
-
+/*
 .btn:focus {
     outline: thin dotted #333;
     outline: 5px auto -webkit-focus-ring-color;
@@ -1982,7 +1982,7 @@ textarea.form-control {
     color: #333;
     text-decoration: none
 }
-
+*/
 .btn.active,.btn:active {
     outline: 0;
     background-image: none;
@@ -7085,4 +7085,8 @@ button.close {
     text-align: left;
     width: 100%;
     display: inline-block;
+}
+
+.has-error .text-no-error {
+    color: initial;
 }
