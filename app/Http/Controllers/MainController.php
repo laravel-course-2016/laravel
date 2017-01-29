@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Mail\FeedbackMail;
+use App\Models\Page;
 use App\Models\Post;
 use Illuminate\Support\Facades\Mail;
 
@@ -31,11 +32,11 @@ class MainController extends Controller
         return view('layouts.primary', [
             'page' => 'pages.about',
             'title' => 'Обо мне',
-            'content' => '<p>Привет, меня зовут Дмитрий Юрьев и я веб разработчик!</p>',
-            'image' => [
+            'content' => Page::find(1)->content,
+            /*'image' => [
                 'path' => 'assets/images/Me.jpg',
                 'alt' => 'Image'
-            ],
+            ],*/
             'activeMenu' => 'about',
         ]);
     }
@@ -67,10 +68,5 @@ class MainController extends Controller
             'link' => '<a href="javascript:history.back()">Вернуться назад</a>',
             'activeMenu' => 'feedback',
         ]);
-    }
-
-    public function showError()
-    {
-        return response()->view('errors.503', ['error' => '404 страница не найдена'], 404);
     }
 }
