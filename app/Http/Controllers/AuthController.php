@@ -17,7 +17,6 @@ class AuthController extends Controller
         return view('layouts.secondary', [
             'page' => 'pages.register',
             'title' => 'Регистрация в блоге',
-            'content' => '',
             'activeMenu' => 'register',
         ]);
     }
@@ -34,7 +33,7 @@ class AuthController extends Controller
             'email' => 'required|max:255|email|unique:users',
             'password' => 'required|max:255|min:6',
             'password2' => 'required|same:password',
-            'phone' => 'required|regex:/\+\d{1}\s{1}\(\d{3}\)\s{1}\d{3}\-\d{2}\-\d{2}/',
+            'phone' => 'regex:/\+\d{1}\s{1}\(\d{3}\)\s{1}\d{3}\-\d{2}\-\d{2}/',
             'is_confirmed' => 'accepted'
         ]);
 
@@ -53,25 +52,27 @@ class AuthController extends Controller
                 'link' => '<a href="' . route('site.auth.login') . '">Войти</a>',
                 'activeMenu' => 'register',
             ]);
+        } else {
+            abort(500);
         }
     }
 
+    /**
+     * Отображение страницы входа в систему
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function login()
     {
         return view('layouts.secondary', [
             'page' => 'pages.login',
             'title' => 'Вход в систему',
-            'content' => '<p>Привет, меня зовут Дмитрий Юрьев и я веб разработчик!</p>',
-            'activeMenu' => 'feedback',
+            'activeMenu' => 'login',
         ]);
     }
 
     public function loginPost()
     {
-        /*var_dump($this->request->all());
-        dump($this->request->all());
-        debug($this->request->all());*/
-
         $remember = $this->request->input('remember') ? true : false;
 
         $authResult = Auth::attempt([
