@@ -48,7 +48,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof ModelNotFoundException || $exception instanceof NotFoundHttpException) {
+        if ($exception instanceof NotFoundHttpException || $exception instanceof ModelNotFoundException) {
             return response()->view('errors.default', [
                 'errorCode' => 404,
                 'errorMessage' => 'Страница не найдена'
@@ -56,10 +56,17 @@ class Handler extends ExceptionHandler
         }
 
         if ($exception instanceof HttpException) {
-            return response()->view('errors.default', [
-                'errorCode' => 403,
-                'errorMessage' => 'Доступ запрещен'
-            ], 403);
+            if ($exception->getStatusCode() == 403) {
+                return response()->view('errors.default', [
+                    'errorCode' => 403,
+                    'errorMessage' => 'Доступ запрещен'
+                ], 403);
+            } else {
+                return response()->view('errors.default', [
+                    'errorCode' => 500,
+                    'errorMessage' => 'Внутренняя ошибка сервера'
+                ], 500);
+            }
         }
 
         return parent::render($request, $exception);

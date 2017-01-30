@@ -17,8 +17,12 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <script src="assets/js/default.js?{{ sha1(microtime(true)) }}"></script>
     @section('head_scripts')
+        <script>
+            window.BlogSettings = {
+                "activeMenu": "{{ $activeMenu or '' }}"
+            };
+        </script>
     @show
 </head>
 
@@ -39,6 +43,11 @@
 @show
 
 @section('bottom_scripts')
+    <script src="assets/js/default.js"></script>
+@show
+
+@section('app_scripts')
+    <script src="assets/js/app.js?{{ sha1(microtime(true)) }}"></script>
 @show
 </body>
 </html>
