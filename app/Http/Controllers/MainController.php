@@ -3,16 +3,19 @@
 use App\Mail\FeedbackMail;
 use App\Models\Page;
 use App\Models\Post;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
 {
     public function index()
     {
-        $posts = Post::active()
-            ->intime()
-            ->orderBy('id', 'DESC')
-            ->paginate(config('blog.itemsPerPage'));
+        $posts = Cache::remember('main-posts', 10, function () {
+            return Post::active()
+                ->intime()
+                ->orderBy('id', 'DESC')
+                ->paginate(config('blog.itemsPerPage'));
+        });
 
         return view('layouts.primary', [
             'page' => 'pages.main',

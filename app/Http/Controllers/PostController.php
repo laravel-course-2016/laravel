@@ -6,6 +6,8 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Section;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -77,5 +79,58 @@ class PostController extends Controller
             ],
             'posts' => $posts,
         ]);
+    }
+
+    public function createold()
+    {
+        /*if (Gate::allows('create-post')) {
+            return view('layouts.primary', [
+                'page' => 'pages.create',
+                'title' => 'Создание нового поста',
+            ]);
+        }
+
+        abort(403);
+        */
+
+        $user = Auth::user();
+
+        //$postModel = Post::find($id);
+
+        if ($user->can('create', Post::class)) {
+            return view('layouts.primary', [
+                'page' => 'pages.create',
+                'title' => 'Создание нового поста',
+            ]);
+        }
+
+        abort(403);
+    }
+
+
+    public function create()
+    {
+        try {
+            $this->authorize('create', Post::class);
+
+            return view('layouts.primary', [
+                'page' => 'pages.create',
+                'title' => 'Создание нового поста',
+            ]);
+        } catch (\Exception $e) {
+            abort(403);
+        }
+    }
+
+    public function createPost()
+    {
+        try {
+            $this->authorize('create', Post::class);
+            Post::create($this->request->all());
+
+            return redirect()->back();
+        } catch (\Exception $e) {
+            abort(403);
+        }
     }
 }
