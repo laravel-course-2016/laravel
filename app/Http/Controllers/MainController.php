@@ -3,20 +3,14 @@
 use App\Mail\FeedbackMail;
 use App\Models\Page;
 use App\Models\Post;
+use App\Repository\PostsRepository;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
 {
-    public function index()
+    public function index(PostsRepository $postsRepository)
     {
-        $posts = Cache::remember('main-posts', 10, function () {
-            return Post::active()
-                ->intime()
-                ->orderBy('id', 'DESC')
-                ->paginate(config('blog.itemsPerPage'));
-        });
-
         return view('layouts.primary', [
             'page' => 'pages.main',
             'title' => 'Blogplace :: Блог Дмитрий Юрьев - PHP & JS разработчик, ментор, преподаватель',
@@ -26,7 +20,7 @@ class MainController extends Controller
                 'alt' => 'Image'
             ],
             'activeMenu' => 'main',
-            'posts' => $posts,
+            'posts' => $postsRepository->getPostsOnMainPage(),
         ]);
     }
 
@@ -61,8 +55,9 @@ class MainController extends Controller
             'message' => 'required|max:10240|min:10',
         ]);
 
-        Mail::to('dima@932433.ru')
-            ->send(new FeedbackMail($this->request->all()));
+        Mail::to(['dima@932433.ru', 'asd@dswsa7d.ru'])
+            ->send(new FeedbackMail($this->request->all()
+        ));
 
         return view('layouts.primary', [
             'page' => 'parts.blank',
