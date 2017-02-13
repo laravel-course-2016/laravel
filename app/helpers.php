@@ -3,6 +3,10 @@
  if (!function_exists('getRusDate')) {
     function getRusDate($dateTime, $format = '%DAYWEEK%, d %MONTH% Y H:i', $offset = 0)
     {
+        if (!is_string($dateTime)) {
+            throw new \Exception('Incorrect datetime');
+        }
+
         $monthArray = array('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
         $daysArray = array('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');
 
@@ -23,3 +27,19 @@ if (!function_exists('uploads_path')) {
         return storage_path('app.uploads');
     }
 }
+/*
+function add2numbers($a, $b)
+{
+    return $a + $b;
+}
+
+
+
+assert(add2numbers(2,2) == 4);
+assert(add2numbers('',false) == 4);
+
+*/
+
+
+UNIT tests
+Functional tests

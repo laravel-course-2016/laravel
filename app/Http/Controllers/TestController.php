@@ -6,6 +6,7 @@ use App\Models\Upload;
 use Illuminate\Http\Request;
 use App\Classes\AwesomeClass;
 use App\Classes\Uploader;
+use Illuminate\Support\Facades\Cache;
 
 class TestController extends Controller
 {
@@ -177,5 +178,28 @@ class TestController extends Controller
 
 
         //echo '111';
+    }
+
+    public function cacheGet()
+    {
+        $value1 = Cache::get('key');
+        $value1 = Cache::get('key', 'default_value');
+        $value2 = Cache::pull('key');
+
+
+        Cache::put('key1', 'value1', 10);
+        Cache::add('key2', 'value2', 10);
+        Cache::forever('key3', 'value3');
+
+        Cache::forget('key');
+        Cache::flush();
+
+
+        if (Cache::has('key')) {
+            echo 'cache exists';
+        }
+
+
+        return 'cache';
     }
 }

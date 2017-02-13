@@ -55,6 +55,7 @@ Route::post('/login', 'AuthController@loginPost')->name('site.auth.loginPost');
 Route::get('/logout', 'AuthController@logout')->name('site.auth.logout');
 
 Route::get('/test', 'TestController@testGet');
+Route::get('/test/cache', 'TestController@cacheGet');
 Route::post('/test', 'TestController@testPost');
 
 /*  
