@@ -35,7 +35,7 @@ class MainController extends Controller
         return view('layouts.primary', [
             'page' => 'pages.about',
             'title' => 'Обо мне',
-            'content' => Page::find(1)->content,
+            'content' => 'vbcbc',
             /*'image' => [
                 'path' => 'assets/images/Me.jpg',
                 'alt' => 'Image'
